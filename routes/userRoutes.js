@@ -22,7 +22,7 @@ router.get("/me", protect, getMe);
 
 // Admin routes
 router.get("/", protect, adminOnly, getAllUsers);
-router.post("/", super_adminOnly, createUser);
+router.post("/", protect, super_adminOnly, createUser);
 router.put("/:id", protect, updateUser);
 router.delete("/:id", protect, super_adminOnly, deleteUser);
 
