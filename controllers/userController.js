@@ -131,7 +131,7 @@ export const createUser = async (req, res) => {
 // ---------------- Update User (Admin) ----------------
 export const updateUser = async (req, res) => {
   try {
-    const { username, email, password, role } = req.body;
+    const { username, email, password, role, phone } = req.body;
     const updateData = {};
 
     const existing = await User.findOne({ email });
@@ -142,6 +142,7 @@ export const updateUser = async (req, res) => {
 
     if (username) updateData.username = username;
     if (email) updateData.email = email;
+    if (phone) updateData.phone = phone;
     if (password) updateData.password = await bcrypt.hash(password, 10);
     if (role) updateData.role = role;
 
