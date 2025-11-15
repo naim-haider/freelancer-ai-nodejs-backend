@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema(
     phone: {
       type: String,
       required: false,
-      match: [/^\+?[0-9]{10,15}$/, "Please enter a valid phone number"], // e.g. +919876543210 or 9876543210
+      // match: [/^\+?[0-9]{10,15}$/, "Please enter a valid phone number"], // e.g. +919876543210 or 9876543210
     },
     role: {
       type: String,
