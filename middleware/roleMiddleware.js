@@ -1,8 +1,8 @@
 export const adminOnly = (req, res, next) => {
-  if (req.user.role !== "super-admin" || req.user.role !== "admin") {
+  if (req.user.role !== "admin" && req.user.role !== "super-admin") {
     return res
       .status(403)
-      .json({ error: "Super Admin and Admin access required" });
+      .json({ error: "Admin or Super Admin access required" });
   }
   next();
 };
