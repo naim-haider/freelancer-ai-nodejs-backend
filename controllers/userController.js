@@ -105,7 +105,7 @@ export const getAllUsers = async (req, res) => {
 // ---------------- Create User (Admin) ----------------
 export const createUser = async (req, res) => {
   try {
-    const { username, email, password, role } = req.body;
+    const { username, email, password, role, phone } = req.body;
 
     if (!["admin", "user", "super-admin"].includes(role))
       return res.status(400).json({ error: "Invalid role" });
@@ -117,7 +117,13 @@ export const createUser = async (req, res) => {
         .json({ error: "User already exists with this email address" });
 
     const hashed = await bcrypt.hash(password, 10);
-    const newUser = new User({ username, email, password: hashed, role });
+    const newUser = new User({
+      username,
+      email,
+      phone,
+      password: hashed,
+      role,
+    });
     await newUser.save();
 
     res
